@@ -113,7 +113,7 @@ st.title("Image Analysis")
 
 # Set the subtitle
 st.subheader("Your personal companion now can see and help even more")
-uploaded_file = st.file_uploader("Let me seeee ", type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Let me seeee ", type=["png", "jpg", "jpeg", "webp"])
 
 submit_button = st.button("Submit")
 
