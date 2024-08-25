@@ -49,10 +49,10 @@ genai.configure(api_key=os.getenv("API_KEY"))
 
 # Set the model configuration
 generation_config = {
-    "temperature": 0.4,
+    "temperature": 0.8,
     "top_p": 0.95,
     "top_k": 32,
-    "max_output_tokens": 4096,
+    "max_output_tokens": 2048,
 }
 
 # Apply safety measures
