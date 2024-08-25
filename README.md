@@ -55,7 +55,8 @@ Inside the .env file, add your Google Generative AI API key:
 **Submit for Analysis:** Once the file is uploaded, click the "Submit" button to receive feedback or analysis from the AI.
 Interactive Chat: You can interact with the AI by typing questions or comments in the chat box and clicking "Send."
 
-##Customization
+## Customization
+
 **Styling:** The app uses custom CSS to style the chat bubbles. You can modify the CSS in the st.markdown section of the app.py file.
 
 **Model Configuration:** The AI model's parameters like temperature, top_p, and top_k can be customized in the generation_config dictionary.
@@ -71,6 +72,6 @@ Contributing
 Contributions are welcome! Please fork this repository and submit a pull request with your changes.
 
 
-##Contact
+## Contact
 If you have any questions or feedback, feel free to contact me at ohammadi.oh@gmail.com.
 
