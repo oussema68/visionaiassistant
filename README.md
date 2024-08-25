@@ -1,7 +1,7 @@
 
 # The Limit
 
-![alt text](https://github.com/oussema68/visionaiassistant/blob/master/logo/logo.png)
+![alt text](https://github.com/oussema68/visionaiassistant/blob/master/logo/logo.png) width=128
 
 An ai vision assistant
 
