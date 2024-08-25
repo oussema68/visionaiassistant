@@ -4,6 +4,7 @@ from pathlib import Path
 import google.generativeai as genai
 
 from dotenv import load_dotenv
+import os
 
 
 load_dotenv() #environment variables
