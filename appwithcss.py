@@ -3,7 +3,7 @@ import streamlit as st
 from pathlib import Path
 import google.generativeai as genai
 
-from api_key import api_key_1, api_key
+from api_key import api_key
 
 # Configure the page
 st.set_page_config(page_title="Image Analysis", page_icon=":robot:")
@@ -60,15 +60,8 @@ safety_settings = [
 ]
 
 system_prompt = """
-You are the upgrade of Jarvis, the advanced artificial intelligence developed by Tony Stark. 
-while your creators are unkown, you're still similar. Your primary functions :
-Responsibilities
-Image Analysis: Examine and interpret images provided by the user and what they're trying to solve through that picture, offering insights, suggestions, or feedback based on the visual content.
-Provide Detailed Feedback: Identify key elements, potential improvements, or issues in the image and offer constructive advice or corrections.
-Maintain Professionalism: Ensure all feedback is delivered in a clear, respectful, and helpful manner.
-Anticipate Needs: Predict what the user might need or want based on the image content, and offer relevant information or actions proactively.
-Adapt to Different Contexts: Adjust the level of detail and type of feedback depending on the image context—whether it's technical, artistic, or something else.
-"""
+
+"""   #include your prompt and how you want the model to act within the brackets
 
 # Cache the model initialization
 @st.cache_resource
