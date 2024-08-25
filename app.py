@@ -202,8 +202,14 @@ if st.button("Send"):
         # Generate response from the AI
         chat_response = generate_ai_response(prompt_parts)
 
-        # Add the AI response to the chat history
-        st.session_state["chat_history"].append({"role": "assistant", "content": chat_response.text})
+        # Check if the response contains valid text parts
+        if chat_response and hasattr(chat_response, 'text'):
+            # Add the AI response to the chat history
+            st.session_state["chat_history"].append({"role": "assistant", "content": chat_response.text})
+        else:
+            # Handle the case where the response is invalid or blocked
+            st.session_state["chat_history"].append({"role": "assistant", "content": "Sorry, I couldn't generate a response."})
+
 
         # Update the page to reflect the new chat state
         st.rerun()  # If rerun isn't available, you can remove this line
