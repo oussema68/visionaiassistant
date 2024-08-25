@@ -44,7 +44,7 @@ Inside the .env file, add your Google Generative AI API key:
 
     pip install -r requirements.txt
 
-**Run the Streamlit app:**
+-**Run the Streamlit app:**
 
     streamlit run app.py
 
@@ -52,8 +52,10 @@ Inside the .env file, add your Google Generative AI API key:
 ## Usage
 
 **Upload an Image/Document:** Click on the "Let me seeee" button to upload an image or document.
+
 **Submit for Analysis:** Once the file is uploaded, click the "Submit" button to receive feedback or analysis from the AI.
-Interactive Chat: You can interact with the AI by typing questions or comments in the chat box and clicking "Send."
+
+**Interactive Chat:** You can interact with the AI by typing questions or comments in the chat box and clicking "Send."
 
 ## Customization
 
@@ -68,8 +70,7 @@ requirements.txt: Lists the Python packages required to run the app.
 **logo/:** Contains the logo image displayed in the app.
 
 **.env:** Contains environment variables, including the API key (not included in the repo for security reasons).
-Contributing
-Contributions are welcome! Please fork this repository and submit a pull request with your changes.
+
 
 
 ## Contact
