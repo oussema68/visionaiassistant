@@ -44,7 +44,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Configure genai with the API key
-genai.configure(api_key=os.getenv)
+genai.configure(api_key=os.getenv("API_KEY"))
 
 # Set the model configuration
 generation_config = {
