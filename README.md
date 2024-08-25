@@ -1,9 +1,9 @@
 
 # The Limit
 
-![alt text](https://github.com/oussema68/visionaiassistant/blob/master/logo/logo.png) width=128
+<img src="https://github.com/oussema68/visionaiassistant/blob/master/logo/logo.png" alt="Logo" width="200"/>
 
-An ai vision assistant
+**An ai vision assistant**
 
 # Image Analysis Streamlit App
 
