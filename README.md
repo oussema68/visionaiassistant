@@ -22,12 +22,12 @@ This is a Streamlit web application that allows users to upload images or docume
 
 -**Create a virtual environment (optional but recommended):**
 
-    On Linux,
-      python -m venv venv
-      source venv/bin/activate  
-    On Windows, 
-      python -m venv venv
-      venv\Scripts\activate
+        # On Linux:
+        python -m venv venv
+        source venv/bin/activate  
+        # On Windows, 
+        python -m venv venv
+        venv\Scripts\activate
 
 
 -**Clone the repository:**
