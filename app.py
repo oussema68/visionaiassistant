@@ -120,6 +120,10 @@ uploaded_file = st.file_uploader(
 )
 submit_button = st.button("Submit")
 
+if "uploaded_file" not in st.session_state:
+    st.session_state["uploaded_file"] = None
+
+
 # Initialize chat history in session state if it doesn't exist
 if "chat_history" not in st.session_state:
     st.session_state["chat_history"] = []
