@@ -113,8 +113,11 @@ st.title("Image Analysis")
 
 # Set the subtitle
 st.subheader("Your personal companion now can see and help even more")
-uploaded_file = st.file_uploader("Let me seeee ", type=["png", "jpg", "jpeg", "webp"])
-
+# Modify the file uploader to accept video formats as well
+uploaded_file = st.file_uploader(
+    "Upload an image, video, or document", 
+    type=["png", "jpg", "jpeg", "pdf", "doc", "docx", "txt", "mp4", "avi", "mov", "mkv", "webm"]
+)
 submit_button = st.button("Submit")
 
 # Initialize chat history in session state if it doesn't exist
@@ -125,45 +128,54 @@ if "chat_history" not in st.session_state:
 # Store the image in session state
 if uploaded_file and submit_button:
     # Process the uploaded image
-    image_data = uploaded_file.getvalue()
-    st.session_state["uploaded_image"] = image_data  # Save image to session state
-    uploaded = st.session_state["uploaded_image"]
+    file_data = uploaded_file.getvalue()
+    st.session_state["uploaded_filr"] = file_data  # Save image to session state
+    uploaded = st.session_state["uploaded_file"]
+    if uploaded_file.type.startswith("image/"):
+        # Convert the image data to base64 for Markdown display
+        image_b64 = base64.b64encode(file_data).decode("utf-8")
+        image_md = f"![User Image](data:{uploaded_file.type};base64,{image_b64})"
+        # Add the image to chat history as a user message
+        st.session_state["chat_history"].append({"role": "user", "content": image_md, "file_data": file_data})
+        # Display the image
+        st.image(file_data, width=350)
 
-    # Convert the image data to base64 for Markdown display
-    image_b64 = base64.b64encode(image_data).decode("utf-8")
-    image_md = f"![User Image](data:image/png;base64,{image_b64})"
-    
-    # Add the image to chat history as a user message
-    st.session_state["chat_history"].append({"role": "user", "content": image_md, "image_data": image_data  })
-    
-    
-    # Display the image
-    st.image(image_data, width=350)
-    
+    elif uploaded_file.type.startswith("video/"):
+        # Display the video directly in Streamlit
+        st.session_state["chat_history"].append({"role": "user", "content": "User uploaded a video.", "file_data": file_data})
+        st.video(file_data)
 
-    # Define the image as a part of the prompt
-    image_parts = [{"mime_type": uploaded_file.type, "data": image_data}]
-    
-    # Combine the system prompt and image data
-    prompt_parts = [image_parts[0], system_prompt]
+    else:
+        # Display other file types
+        st.session_state["chat_history"].append({"role": "user", "content": f"Uploaded a file of type {uploaded_file.type}", "file_data": file_data})
+        st.write(f"Uploaded a file of type: {uploaded_file.type}")
 
-    # Generate content based on the image and system prompt
+    # Define the file as a part of the prompt
+    file_parts = [{"mime_type": uploaded_file.type, "data": file_data}]
+    
+    # Combine the system prompt and file data
+    prompt_parts = [file_parts[0], system_prompt]
+
+    # Generate content based on the file and system prompt
     response = generate_ai_response(prompt_parts)
     st.session_state["chat_history"].append({"role": "assistant", "content": response.text})
 
 # Display the conversation with styled chat bubbles
 for message in st.session_state["chat_history"]:
     if message["role"] == "user":
-        if message["content"].startswith("![User Image]"):
-            st.markdown(f"""
-            <div class="message-container user">
-                <div class="user-bubble">
-            """, unsafe_allow_html=True)
-            # Use st.image to display the image
-            st.image(message["image_data"], width=350)
-            st.markdown(f"""
-                </div>
-            </div>""", unsafe_allow_html=True)
+        if "file_data" in message:
+            if message["content"].startswith("![User Image]"):
+                st.markdown(f"""
+                <div class="message-container user">
+                    <div class="user-bubble">
+                """, unsafe_allow_html=True)
+                # Use st.image to display the image
+                st.image(message["file_data"], width=350)
+                st.markdown(f"""
+                    </div>
+                </div>""", unsafe_allow_html=True)
+            else:
+                st.video(message["file_data"])
         else:
             st.markdown(f'<div class="message-container user"><div class="user-bubble">{message["content"]}</div></div>', unsafe_allow_html=True)
     else:
@@ -194,8 +206,8 @@ if st.button("Send"):
 
         # Include the previously uploaded image in the conversation, if available
         if "uploaded_image" in st.session_state:
-            image_parts = [{"mime_type": "image/png", "data": st.session_state["uploaded_image"]}]
-            prompt_parts = [image_parts[0], user_message]
+            image_parts = [{"mime_type": uploaded_file.type, "data": st.session_state["uploaded_file"]}]
+            prompt_parts = [file_parts[0], user_message]
         else:
             prompt_parts = [user_message]
 
