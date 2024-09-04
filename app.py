@@ -45,7 +45,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Configure genai with the API key
-genai.configure(api_key=os.getenv("API_KEY"))
+genai.configure(api_key=os.getenv("API_KEY1"))
 
 # Set the model configuration
 generation_config = {
@@ -217,6 +217,12 @@ if st.button("Send"):
 
         # Generate response from the AI
         chat_response = generate_ai_response(prompt_parts)
+
+        if response:
+            st.write(f"Response received: {response}")
+        else:
+            st.write("No response received.")
+
 
         # Check if the response contains valid text parts
         if chat_response and hasattr(chat_response, 'text'):
