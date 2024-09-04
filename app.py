@@ -129,7 +129,7 @@ if "chat_history" not in st.session_state:
 if uploaded_file and submit_button:
     # Process the uploaded image
     file_data = uploaded_file.getvalue()
-    st.session_state["uploaded_filr"] = file_data  # Save image to session state
+    st.session_state["uploaded_file"] = file_data  # Save image to session state
     uploaded = st.session_state["uploaded_file"]
     if uploaded_file.type.startswith("image/"):
         # Convert the image data to base64 for Markdown display
