@@ -1,5 +1,9 @@
 # Image Analysis Streamlit App
 
+<img src="logo/logo.png" alt="Logo" width="300"/>
+
+
+
 ## Overview
 
 This is a Streamlit web application that allows users to upload images or documents and receive detailed feedback, suggestions, or analysis based on the content. The app is powered by Google Generative AI for providing insights and responses based on the uploaded content.
