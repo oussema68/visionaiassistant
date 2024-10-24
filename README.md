@@ -1,6 +1,6 @@
 # Image Analysis Streamlit App
 
-<img src="logo/logo.png" alt="Logo" width="300"/>
+// <img src="logo/logo.png" alt="Logo" width="300"/> # put your own logo (delete // and add your own logo as logo/logo.png )
 
 
 
